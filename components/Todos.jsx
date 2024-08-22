@@ -16,13 +16,18 @@ const Todos = ({title, description,isComplete,id,mongoId,deleteTodo,completedTod
                     {isComplete ? "Complete" : "Pending"}
                 </td>
                 <td className="px-6 py-4 flex justify-around">
-                {isComplete ? "" : <button onClick={()=>deleteTodo(mongoId)} className='px-4 py-2 bg-red-700 text-white hover:bg-red-600 transition-all rounded-sm'>
+                {isComplete ? (<button onClick={()=>deleteTodo(mongoId)} className='px-4 py-2 bg-red-700 text-white hover:bg-red-600 transition-all rounded-sm'>
                     Delete
-                </button>}
-                <button onClick={()=>completedTodo(mongoId)} className='px-4 py-2 bg-green-600 text-white hover:bg-green-500 transition-all rounded-sm'>
-                    Done
                 </button>
-
+                
+            ) :<div className='w-full flex justify-around'> <button onClick={()=>completedTodo(mongoId)} className='px-4 py-2 bg-green-600 text-white hover:bg-green-500 transition-all rounded-sm'>
+            Done
+        </button>
+        <button onClick={()=>deleteTodo(mongoId)} className='px-4 py-2 bg-red-700 text-white hover:bg-red-600 transition-all rounded-sm'>
+                    Delete
+                </button>
+        </div> }
+            
                 </td>
             </tr>
   )
